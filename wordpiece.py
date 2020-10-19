@@ -72,6 +72,12 @@ class BytePairEncoder:
     
     def save(self, fname):
         with open(fname, 'w', encoding='utf-8') as f:
+            f.write('[CLS]\n')
+            f.write('[PAD]\n')
+            f.write('[UNK]\n')
+            f.write('[SEP]\n')
+            f.write('[MASK]\n')
+            
             for unit, frequency in sorted(self.units.items(), key=lambda x:(-x[1], -len(x[0]))):
                 f.write('{}\n'.format(unit))
             #f.write()
